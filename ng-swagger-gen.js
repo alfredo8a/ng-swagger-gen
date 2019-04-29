@@ -250,12 +250,13 @@ function doGenerate(swagger, options) {
       && swagger.basePath !== '/') {
       rootUrl += swagger.basePath;
     }
-
-    generate(templates.configuration, applyGlobals({
-        rootUrl: rootUrl,
-      }),
-      path.join(output, configurationFile + '.ts')
-    );
+    if (!fs.existsSync(path.join(output, configurationFile + '.ts'))) {
+      generate(templates.configuration, applyGlobals({
+          rootUrl: rootUrl,
+        }),
+        path.join(output, configurationFile + '.ts')
+      );
+    }
   }
 
   // Write the BaseService
@@ -843,6 +844,7 @@ function propertyType(property) {
 function processProperties(swagger, properties, requiredProperties) {
   var result = {};
   for (var name in properties) {
+    
     var property = properties[name];
     var descriptor = {
       propertyName: name.indexOf('-') === -1 ? name : `"${name}"`,
@@ -1156,6 +1158,7 @@ function processServices(swagger, models, options) {
         if (options.camelCase) return (string.charAt(0).toLowerCase() + string.slice(1)).replace('UsingGET','').replace('UsingPOST','');
         else return string;
       }
+      // id = id.replace(/VO/g,'');
       var operation = {
         operationName: getOperationName(id),
         operationParamsClass: paramsClass,
