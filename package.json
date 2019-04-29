@@ -1,30 +1,62 @@
 {
-  "name": "ng-swagger-gen",
-  "version": "1.7.0-a",
-  "license": "MIT",
-  "author": "Cyclos development team",
-  "description": "A Swagger 2.0 codegen for Angular",
-  "private": false,
-  "keywords": [
-    "angular",
-    "swagger",
-    "codegen"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/cyclosproject/ng-swagger-gen.git"
+  "_from": "ng-swagger-gen",
+  "_id": "ng-swagger-gen@1.7.0-b",
+  "_inBundle": false,
+  "_integrity": "sha512-8a315l56l/oJsq+WsI9wbjM700KVvE6cNGzp6HAfpNIN7gdMPjWHRoMcY3xzIT4wLCC6RjUcuusANKF3lgmBXw==",
+  "_location": "/ng-swagger-gen",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "ng-swagger-gen",
+    "name": "ng-swagger-gen",
+    "escapedName": "ng-swagger-gen",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
   },
+  "_requiredBy": [
+    "#DEV:/",
+    "#USER"
+  ],
+  "_resolved": "http://npme.walmart.com/ng-swagger-gen/-/ng-swagger-gen-1.7.0-b.tgz",
+  "_shasum": "32009a045be1a6116a0e8d3361e1ebe77f556363",
+  "_spec": "ng-swagger-gen",
+  "_where": "/Users/vn0e85u/sif",
+  "author": {
+    "name": "Cyclos development team"
+  },
+  "bin": {
+    "ng-swagger-gen": "./ng-swagger-gen"
+  },
+  "bugs": {
+    "url": "https://github.com/cyclosproject/ng-swagger-gen/issues"
+  },
+  "bundleDependencies": false,
   "dependencies": {
     "argparse": "^1.0.10",
     "global-tunnel-ng": "^2.7.1",
     "json-schema-ref-parser": "^5.1.3",
     "mustache": "^2.3.2"
   },
+  "deprecated": false,
+  "description": "A Swagger 2.0 codegen for Angular",
+  "homepage": "https://github.com/cyclosproject/ng-swagger-gen#readme",
+  "keywords": [
+    "angular",
+    "swagger",
+    "codegen"
+  ],
+  "license": "MIT",
+  "name": "ng-swagger-gen",
   "peerDependencies": {
     "@angular/core": ">=6.0.0",
     "rxjs": ">=6.0.0"
   },
-  "bin": {
-    "ng-swagger-gen": "./ng-swagger-gen"
-  }
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cyclosproject/ng-swagger-gen.git"
+  },
+  "version": "1.7.0-b"
 }

@@ -579,7 +579,7 @@ function processModels(swagger, options) {
     } else {
       simpleType = propertyType(model);
     }
-    var modelClass = toClassName(name);
+    var modelClass = toClassName(name).replace("VO","");
     var descriptor = {
       modelName: name,
       modelClass: modelClass,
@@ -1151,7 +1151,7 @@ function processServices(swagger, models, options) {
         docString += '\n@return ' + operationResponses.resultDescription;
       }
       function getOperationName(string) {
-        if (options.camelCase) return string.charAt(0).toLowerCase() + string.slice(1);
+        if (options.camelCase) return (string.charAt(0).toLowerCase() + string.slice(1)).replace('UsingGET','').replace('UsingPOST','');
         else return string;
       }
       var operation = {
