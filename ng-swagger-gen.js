@@ -441,7 +441,7 @@ function simpleRef(ref) {
   if (index >= 0) {
     ref = ref.substr(index + 1);
   }
-  return toClassName(ref);
+  return toClassName(ref).replace(/VO/g,'');
 }
 
 /**
@@ -533,7 +533,9 @@ function processModels(swagger, options) {
   var name, model, i, property;
   var models = {};
   for (name in swagger.definitions) {
-    model = swagger.definitions[name];
+    var originalName = name;
+    name = name.replace(/VO/g,"");
+    model = swagger.definitions[originalName];
     var parent = null;
     var properties = null;
     var requiredProperties = null;
@@ -579,7 +581,7 @@ function processModels(swagger, options) {
     } else {
       simpleType = propertyType(model);
     }
-    var modelClass = toClassName(name).replace("VO","");
+    var modelClass = toClassName(name);
     var descriptor = {
       modelName: name,
       modelClass: modelClass,
