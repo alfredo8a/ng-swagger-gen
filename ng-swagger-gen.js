@@ -959,7 +959,7 @@ function tagName(tag, options) {
     tag = options.defaultTag || 'Api';
   }
   tag = toIdentifier(tag);
-  return tag.charAt(0).toUpperCase() + (tag.length == 1 ? '' : tag.substr(1));
+  return tag.charAt(0).toUpperCase() + (tag.length == 1 ? '' : tag.substr(1)).replace(/Impl/g,'');
 }
 
 /**
