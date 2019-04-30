@@ -22,7 +22,9 @@ function ngSwaggerGen(options) {
   
   $RefParser.bundle(options.swagger, { dereference: { circular: false } }).then(
     data => {
-      doGenerate(data, options);
+      var clean = JSON.stringify(data).replace(/VO/g,'').replace(/\sImpl/g,'').replace(/\-impl/g,'').replace(/UsingPOST/g,'').replace(/UsingGET/g,'');
+      var cleanData = JSON.parse(clean)
+      doGenerate(cleanData, options);
     },
     err => {
       console.error(
@@ -130,7 +132,9 @@ function doGenerate(swagger, options) {
     if (modelsArray.includes(model)) {
       continue;
     }
-    modelsArray.push(model);
+    if (modelName.indexOf('Request') === -1 && modelName.indexOf('Response') === -1) {
+      modelsArray.push(model);
+    }
     generate(
       templates.model,
       model,
@@ -442,7 +446,7 @@ function simpleRef(ref) {
   if (index >= 0) {
     ref = ref.substr(index + 1);
   }
-  return toClassName(ref).replace(/VO/g,'');
+  return toClassName(ref)
 }
 
 /**
@@ -534,9 +538,7 @@ function processModels(swagger, options) {
   var name, model, i, property;
   var models = {};
   for (name in swagger.definitions) {
-    var originalName = name;
-    name = name.replace(/VO/g,"");
-    model = swagger.definitions[originalName];
+    model = swagger.definitions[name];
     var parent = null;
     var properties = null;
     var requiredProperties = null;
@@ -844,7 +846,6 @@ function propertyType(property) {
 function processProperties(swagger, properties, requiredProperties) {
   var result = {};
   for (var name in properties) {
-    
     var property = properties[name];
     var descriptor = {
       propertyName: name.indexOf('-') === -1 ? name : `"${name}"`,
@@ -959,7 +960,7 @@ function tagName(tag, options) {
     tag = options.defaultTag || 'Api';
   }
   tag = toIdentifier(tag);
-  return tag.charAt(0).toUpperCase() + (tag.length == 1 ? '' : tag.substr(1)).replace(/Impl/g,'');
+  return tag.charAt(0).toUpperCase() + (tag.length == 1 ? '' : tag.substr(1));
 }
 
 /**
@@ -1155,10 +1156,9 @@ function processServices(swagger, models, options) {
         docString += '\n@return ' + operationResponses.resultDescription;
       }
       function getOperationName(string) {
-        if (options.camelCase) return (string.charAt(0).toLowerCase() + string.slice(1)).replace('UsingGET','').replace('UsingPOST','');
+        if (options.camelCase) return (string.charAt(0).toLowerCase() + string.slice(1));
         else return string;
       }
-      // id = id.replace(/VO/g,'');
       var operation = {
         operationName: getOperationName(id),
         operationParamsClass: paramsClass,
