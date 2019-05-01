@@ -484,7 +484,7 @@ function toComments(text, level) {
   if (text == null || text.length === 0) {
     return indent;
   }
-  const lines = text.trim().split('\n');
+  const lines = text.replace(/\<br\/\>\<br\/\>/g,'<br/>').replace(/\<br\/\>/g,"\n").trim().split('\n');
   var result = '\n' + indent + '/**\n';
   lines.forEach(line => {
     result += indent + ' *' + (line === '' ? '' : ' ' + line) + '\n';
