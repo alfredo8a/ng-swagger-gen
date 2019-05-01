@@ -1,27 +1,27 @@
 {
-  "_from": "ng-swagger-gen",
+  "_from": "ng-swagger-gen@^1.7.0-b",
   "_id": "ng-swagger-gen@1.7.0-b",
   "_inBundle": false,
   "_integrity": "sha512-8a315l56l/oJsq+WsI9wbjM700KVvE6cNGzp6HAfpNIN7gdMPjWHRoMcY3xzIT4wLCC6RjUcuusANKF3lgmBXw==",
   "_location": "/ng-swagger-gen",
   "_phantomChildren": {},
   "_requested": {
-    "type": "tag",
+    "type": "range",
     "registry": true,
-    "raw": "ng-swagger-gen",
+    "raw": "ng-swagger-gen@^1.7.0-b",
     "name": "ng-swagger-gen",
     "escapedName": "ng-swagger-gen",
-    "rawSpec": "",
+    "rawSpec": "^1.7.0-b",
     "saveSpec": null,
-    "fetchSpec": "latest"
+    "fetchSpec": "^1.7.0-b"
   },
   "_requiredBy": [
     "#DEV:/",
     "#USER"
   ],
-  "_resolved": "http://npme.walmart.com/ng-swagger-gen/-/ng-swagger-gen-1.7.0-b.tgz",
+  "_resolved": "https://registry.npmjs.org/ng-swagger-gen/-/ng-swagger-gen-1.7.0-b.tgz",
   "_shasum": "32009a045be1a6116a0e8d3361e1ebe77f556363",
-  "_spec": "ng-swagger-gen",
+  "_spec": "ng-swagger-gen@^1.7.0-b",
   "_where": "/Users/vn0e85u/sif",
   "author": {
     "name": "Cyclos development team"

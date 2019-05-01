@@ -484,7 +484,7 @@ function toComments(text, level) {
   if (text == null || text.length === 0) {
     return indent;
   }
-  const lines = text.replace(/\<br\/\>\<br\/\>/g,'<br/>').replace(/\<br\/\>/g,"\n").trim().split('\n');
+  const lines = text.trim().split('\n');
   var result = '\n' + indent + '/**\n';
   lines.forEach(line => {
     result += indent + ' *' + (line === '' ? '' : ' ' + line) + '\n';
@@ -1074,7 +1074,7 @@ function processServices(swagger, models, options) {
           paramType = propertyType(param.schema);
         } else {
           paramType = propertyType(param);
-        }
+        }        
         var paramTypeNoNull = removeBrackets(paramType, true);
         var paramVar = toIdentifier(param.name);
         var paramDescriptor = {
@@ -1124,7 +1124,8 @@ function processServices(swagger, models, options) {
           break;
         }
       }
-      var docString = (def.description || '').trim();
+      var docString = '@summary\n' + (def.summary || '').trim();
+        docString += '\n@description\n' + (def.description || '').trim().replace(/\<br\/\>\<br\/\>/g,'\n- ').replace(/\<br\/\>/g,'\n- ');
       if (paramsClass == null) {
         for (i = 0; i < operationParameters.length; i++) {
           param = operationParameters[i];
