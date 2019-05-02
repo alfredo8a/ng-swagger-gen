@@ -1166,8 +1166,7 @@ function processServices(swagger, models, options) {
         operationParamsClassComments: paramsClassComments,
         operationMethod: method.toLocaleUpperCase(),
         operationPath: url,
-        operationPathExpression:
-          toPathExpression(operationParameters, paramsClass, url),
+        operationPathExpression: getOperationName(id)+'Path',
         operationResultType: resultType,
         operationHttpResponseType: '__StrictHttpResponse<' + resultType + '>',
         operationComments: toComments(docString, 1),
