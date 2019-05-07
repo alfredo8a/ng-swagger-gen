@@ -5,7 +5,7 @@
     {{/paramIsLast}}{{/operationParameters}}{{/operationParamsClass
     }}): __Observable<{{{operationHttpResponseType}}}> {
     let __params = this.newParams();
-    let __headers = new HttpHeaders();
+    let __headers = this.newHeaders();
     let __body: any = null;{{#operationIsMultipart}}
     __headers.append('Content-Type', 'multipart/form-data');
     let __formData = new FormData();
